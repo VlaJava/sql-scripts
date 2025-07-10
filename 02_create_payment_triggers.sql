@@ -2,12 +2,14 @@ USE DB_VIAJAVA;
 GO
 
 -- 'PENDENTE','APROVADO', 'RECUSADO', 'ESTORNADO' - PAGAMENTO
--- 'PENDENTE', 'CONCLUÕDO', 'RECUSADO', 'CANCELADO'  - RESERVA
+-- 'PENDENTE', 'CONCLU√çDO', 'RECUSADO', 'CANCELADO'  - RESERVA
 
 GO
 
 -- Atualiza o status_reserva para 'CONFIRMADO' quando o pagamento for aprovado
--- Caso o pagamento seja recusado, a reserva ser· 
+-- Caso o pagamento seja recusado, a reserva ter√° o status atualizado para "recusado'
+-- Caso o pagamento seja estornado, a reserva ser√° cancelada
+    
 CREATE TRIGGER tg_pagamento_concluido
 ON TB_PAGAMENTOS
 AFTER INSERT, UPDATE
