@@ -10,7 +10,7 @@ GO
 -- Caso o pagamento seja recusado, a reserva terá o status atualizado para "recusado'
 -- Caso o pagamento seja estornado, a reserva será cancelada
     
-CREATE TRIGGER tg_pagamento_concluido
+CREATE TRIGGER tg_pagamento
 ON TB_PAGAMENTOS
 AFTER INSERT, UPDATE
 AS
