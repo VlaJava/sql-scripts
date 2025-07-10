@@ -48,12 +48,8 @@ IF EXISTS (SELECT * FROM sys.views WHERE name = 'vw_metricas_gerais')
 DROP VIEW vw_metricas_gerais
 GO
 
-IF EXISTS (SELECT * FROM sys.triggers WHERE name = 'tg_pagamento_concluido')
-DROP TRIGGER tg_pagamento_concluido
-GO
-
-IF EXISTS (SELECT * FROM sys.triggers WHERE name = 'tg_pagamento_recusado')
-DROP TRIGGER tg_pagamento_recusado
+IF EXISTS (SELECT * FROM sys.triggers WHERE name = 'tg_pagamento')
+DROP TRIGGER tg_pagamento
 GO
 
 SELECT * FROM sys.tables;
