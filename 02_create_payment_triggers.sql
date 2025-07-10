@@ -1,0 +1,36 @@
+USE DB_VIAJAVA;
+GO
+
+-- PENDENTE','APROVADO', 'RECUSADO - PAGAMENTO
+-- PENDENTE', 'CONCLUÍDA', 'RECUSADA  - RESERVA
+
+GO
+
+-- Atualiza o status_reserva para 'CONFIRMADO' quando o pagamento for aprovado
+CREATE TRIGGER tg_pagamento_concluido
+ON TB_PAGAMENTOS
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    UPDATE R
+    SET R.STATUS_RESERVA = 'CONFIRMADO'
+    FROM TB_RESERVAS R
+    INNER JOIN inserted I ON R.ID = I.RESERVA_ID
+    WHERE UPPER(I.STATUS_PAGAMENTO) = 'APROVADO';
+END
+GO
+
+-- Atualiza o status_reserva para 'RECUSADO' quando o pagamento for recusado
+CREATE TRIGGER tg_pagamento_recusado
+ON TB_PAGAMENTOS
+AFTER UPDATE
+AS
+BEGIN
+
+    UPDATE R
+    SET R.STATUS_RESERVA = 'RECUSADO'
+    FROM TB_RESERVAS R
+    INNER JOIN inserted I ON R.ID = I.RESERVA_ID
+    WHERE UPPER(I.STATUS_PAGAMENTO) = 'RECUSADO';
+END
+GO
