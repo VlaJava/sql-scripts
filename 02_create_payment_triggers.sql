@@ -62,7 +62,7 @@ VALUES (NEWID(), @reserva_teste1, 'PIX', 1500.00, GETDATE(), 'APROVADO');
 -- Deve atualizar STATUS_RESERVA para 'RECUSADO'
 -- =================================================================
 INSERT INTO TB_PAGAMENTOS (ID, RESERVA_ID, METODO, VALOR_PAGO, DATA_PAGAMENTO, STATUS_PAGAMENTO) 
-VALUES (NEWID(), @reserva_teste2, 'CARTAO', 1500.00, GETDATE(), 'RECUSADO');
+VALUES (NEWID(), @reserva_teste2, 'CREDITO', 1500.00, GETDATE(), 'RECUSADO');
 
 -- =================================================================
 -- TESTE 3: INSERT com STATUS_PAGAMENTO = 'ESTORNADO'
@@ -92,7 +92,7 @@ WHERE ID = @pag_teste4;
 -- Inserir pagamento aprovado primeiro
 DECLARE @pag_teste5 UNIQUEIDENTIFIER = NEWID();
 INSERT INTO TB_PAGAMENTOS (ID, RESERVA_ID, METODO, VALOR_PAGO, DATA_PAGAMENTO, STATUS_PAGAMENTO) 
-VALUES (@pag_teste5, @reserva_teste5, 'CARTAO', 1500.00, GETDATE(), 'APROVADO');
+VALUES (@pag_teste5, @reserva_teste5, 'CREDITO', 1500.00, GETDATE(), 'APROVADO');
 
 -- Atualizar para estornado
 UPDATE TB_PAGAMENTOS 
