@@ -52,8 +52,6 @@ IF EXISTS (SELECT * FROM sys.triggers WHERE name = 'tg_pagamento')
 DROP TRIGGER tg_pagamento
 GO
 
-SELECT * FROM sys.tables;
-SELECT * FROM sys.views;
-SELECT * FROM sys.triggers;
+
 
 
