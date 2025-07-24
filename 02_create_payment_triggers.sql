@@ -5,23 +5,23 @@ GO
 -- 'PENDENTE', 'CONCLUÍDO', 'RECUSADO', 'CANCELADO'  - RESERVA
 
 GO
--- Atualiza o status_reserva para 'CONFIRMADO' quando o pagamento for aprovado
+-- Atualiza o status_reserva para 'CONFIRMADO' quando o pagamento for APPROVED
 -- Caso o pagamento seja recusado, a reserva terá o status atualizado para "recusado'
 -- Caso o pagamento seja estornado, a reserva será cancelada
     
-CREATE TRIGGER tg_pagamento
-ON TB_PAGAMENTOS
+CREATE TRIGGER TG_PAYMENTS
+ON TB_PAYMENTS
 AFTER INSERT, UPDATE
 AS
 BEGIN
-    UPDATE R
-    SET R.STATUS_RESERVA = CASE 
-        WHEN I.STATUS_PAGAMENTO = 'APROVADO' THEN 'CONFIRMADO'
-        WHEN I.STATUS_PAGAMENTO = 'RECUSADO' THEN 'RECUSADO'
-        WHEN I.STATUS_PAGAMENTO = 'ESTORNADO' THEN 'CANCELADO'
+    UPDATE B
+    SET B.BOOKING_STATUS = CASE 
+        WHEN I.PAYMENT_STATUS = 'APPROVED' THEN 'CONFIRMED'
+        WHEN I.PAYMENT_STATUS = 'REJECTED' THEN 'REJECTED'
+        WHEN I.PAYMENT_STATUS = 'REFUNDED' THEN 'CANCELED'
                             END
-    FROM TB_RESERVAS R
-    INNER JOIN inserted I ON R.ID = I.RESERVA_ID
-    WHERE I.STATUS_PAGAMENTO IN ('APROVADO', 'RECUSADO', 'ESTORNADO');
+    FROM TB_BOOKINGS B
+    INNER JOIN inserted I ON B.ID = I.BOOKING_ID
+    WHERE I.PAYMENT_STATUS IN ('APPROVED', 'REJECTED', 'REFUNDED');
 END
 GO

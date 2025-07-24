@@ -1,55 +1,52 @@
 USE DB_VIAJAVA
 GO
 
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'TB_AVALIACOES')
-DROP TABLE TB_AVALIACOES;
+IF EXISTS(SELECT * FROM sys.tables WHERE name = 'TB_REVIEWS')
+DROP TABLE TB_REVIEWS;
 GO
 
-IF EXISTS (SELECT * FROM sys.tables WHERE name = 'TB_PAGAMENTOS')
-DROP TABLE TB_PAGAMENTOS;
+IF EXISTS (SELECT * FROM sys.tables WHERE name = 'TB_PAYMENTS')
+DROP TABLE TB_PAYMENTS;
 
-IF EXISTS (SELECT * FROM sys.tables WHERE name = 'TB_VIAJANTES')
-DROP TABLE TB_VIAJANTES
+IF EXISTS (SELECT * FROM sys.tables WHERE name = 'TB_TRAVELERS')
+DROP TABLE TB_TRAVELERS
 GO
 
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'TB_RESERVAS')
-DROP TABLE TB_RESERVAS;
+IF EXISTS(SELECT * FROM sys.tables WHERE name = 'TB_BOOKINGS')
+DROP TABLE TB_BOOKINGS;
 GO
 
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'TB_DOCUMENTOS')
-DROP TABLE TB_DOCUMENTOS;
+IF EXISTS(SELECT * FROM sys.tables WHERE name = 'TB_DOCUMENTS')
+DROP TABLE TB_DOCUMENTS;
 GO
 
 IF EXISTS(SELECT * FROM sys.tables WHERE name = 'TB_ROLES')
 DROP TABLE TB_ROLES;
 GO
 
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'TB_PACOTES')
-DROP TABLE TB_PACOTES;
+IF EXISTS(SELECT * FROM sys.tables WHERE name = 'TB_PACKAGES')
+DROP TABLE TB_PACKAGES;
 GO
 
-IF EXISTS(SELECT * FROM sys.tables WHERE name = 'TB_USUARIOS')
-DROP TABLE TB_USUARIOS;
+IF EXISTS(SELECT * FROM sys.tables WHERE name = 'TB_USERS')
+DROP TABLE TB_USERS;
 GO
 
 IF EXISTS (SELECT * FROM sys.views WHERE name = 'vw_general_metrics')
 DROP VIEW vw_general_metrics 
 GO
 
-IF EXISTS (SELECT * FROM sys.views WHERE name = 'vw_faturamento_mensal')
-DROP VIEW vw_faturamento_mensal
+IF EXISTS (SELECT * FROM sys.views WHERE name = 'vw_monthly_revenue')
+DROP VIEW vw_monthly_revenue
 GO
 
-IF EXISTS (SELECT * FROM sys.views WHERE name = 'vw_destinos_populares')
-DROP VIEW vw_destinos_populares
+IF EXISTS (SELECT * FROM sys.views WHERE name = 'vw_popular_destinations')
+DROP VIEW vw_popular_destinations
 GO
 
-IF EXISTS (SELECT * FROM sys.views WHERE name = 'vw_metricas_gerais')
-DROP VIEW vw_metricas_gerais
-GO
 
-IF EXISTS (SELECT * FROM sys.triggers WHERE name = 'tg_pagamento')
-DROP TRIGGER tg_pagamento
+IF EXISTS (SELECT * FROM sys.triggers WHERE name = 'TG_PAYMENTS')
+DROP TRIGGER TG_PAYMENTS
 GO
 
 
